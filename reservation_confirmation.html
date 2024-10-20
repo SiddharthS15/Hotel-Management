@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <meta>
+<head>
+    <title>Reservation Confirmation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            padding: 20px;
+            background-color: #fff;
+        }
+
+        .confirmation-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.5;
+        }
+
+        .total-bill {
+            font-weight: bold;
+            color: #007BFF;
+        }
+    </style>
+</head>
+<body>
+    <h1>Reservation Confirmation</h1>
+
+    <div class="confirmation-container">
+        <h2>Reservation Details</h2>
+        <p>Name <span id="name"></span></p>
+        <p>Email <span id="email"></span></p>
+        <p>Check In: <span id="checkin"></span></p>
+        <p>Check Out: <span id="checkout"></span></p>
+        <p>Adults: <span id="adults"></span></p>
+        <p>Children: <span id="children"></span></p>
+        <p>Rooms: <span id="rooms"></span></p>
+        <p>Total Bill: ₹<span id="totalBill" class="total-bill"></span></p>
+    </div>
+
+    <script>
+        
+        function getQueryParams() {
+            const queryParams = new URLSearchParams(window.location.search);
+            const params = {};
+            for (const [key, value] of queryParams) {
+                params[key] = value;
+            }
+            return params;
+        }
+
+        const queryParams = getQueryParams();
+
+        // Store the reservation data in localStorage
+        localStorage.setItem('reservation', JSON.stringify(queryParams));
+
+        // Populate the confirmation details from the query parameters
+        document.getElementById("name").textContent = queryParams.name;
+        document.getElementById("email").textContent = queryParams.email;
+        document.getElementById("checkin").textContent = queryParams.checkin;
+        document.getElementById("checkout").textContent = queryParams.checkout;
+        document.getElementById("adults").textContent = queryParams.adults;
+        document.getElementById("children").textContent = queryParams.children;
+        document.getElementById("rooms").textContent = queryParams.rooms;
+        document.getElementById("totalBill").textContent = queryParams.totalBill;
+    </script>
+    </script>
+</body>
+</html>

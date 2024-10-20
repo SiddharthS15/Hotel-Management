@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/login.css">
+  <title>Login Page</title>
+</head>
+<body>
+  
+  <div class="container">
+    <div class="login-box">
+      <h2>Login</h2>
+      <form id="loginForm">
+        <div class="input-box">
+          <input type="email" id="email" required>
+          <label>Email</label>
+        </div>
+        <div class="input-box">
+          <input type="password" id="password" required>
+          <label>Password</label>
+        </div>
+        <div class="forgot-password">
+          <a href="#">Forgot Password?</a>
+        </div>
+        <button type="submit" class="btn">Login</button>
+        <div class="signup-link">
+          <a href="#">Signup</a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // JavaScript code to handle login and admin redirection
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+      // Replace with your admin credentials
+      const adminEmail = 'admin@example.com';
+      const adminPassword = 'admin123';
+
+      if (email === adminEmail && password === adminPassword) {
+        // Redirect to admin page
+        window.location.href = 'admin.html'; // Change 'admin.html' to your actual admin page
+      } else {
+        // Handle normal login or show an error
+        window.location.href = 'index.html'
+        alert("admin user and password wrong")
+      }
+    });
+  </script>
+
+</body>
+</html>

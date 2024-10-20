@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>complete responsive hotel booking website design tutorial</title>
+<!-- Add these buttons inside the .flex div in the header section -->
+<button onclick="goToLoginPage()"><a href="#" class="btn" id="login-btn">Login</a></button>
+<a href="#" class="btn" id="register-btn">Register</a>
+
+
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+
+   <!-- font awesome cdn link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
+   <!-- custom css file link  -->
+   <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+   <!-- header section starts  -->
+
+
+   <section class="header">
+      
+
+      <div class="flex">
+         <a href="#home" class="logo">Hotel Swarg</a>
+         <a href="#availability" class="btn">Check for availability</a>
+         <div id="menu-btn" class="fas fa-bars"></div>
+      </div>
+
+      <nav class="navbar">
+         <a href="#home">Home</a>
+         <a href="#about">About</a>
+         <a href="#reservation">Reservation</a>
+         <a href="#gallery">Gallery</a>
+         <a href="#contact">Contact Us</a>
+         <a href="#reviews">Reviews</a>
+      </nav>
+
+   </section>
+
+   <!-- header section ends -->
+
+   <!-- home section starts  -->
+
+   <section class="home" id="home">
+
+      <div class="swiper home-slider">
+
+         <div class="swiper-wrapper">
+
+            <div class="box swiper-slide">
+               <img src="images/home-img-1.jpg" alt="">
+               <div class="flex">
+                  <h3>Luxurious Rooms</h3>
+                  <a href="#availability" class="btn">Check Availability</a>
+               </div>
+            </div>
+
+            <div class="box swiper-slide">
+               <img src="images/home-img-2.jpg" alt="">
+               <div class="flex">
+                  <h3>Foods and Drinks</h3>
+                  <a href="#reservation" class="btn">Make a Reservation</a>
+               </div>
+            </div>
+
+            <div class="box swiper-slide">
+               <img src="images/home-img-3.jpg" alt="">
+               <div class="flex">
+                  <h3>Luxurious Halls</h3>
+                  <a href="#contact" class="btn">Contact Us</a>
+               </div>
+            </div>
+
+         </div>
+
+         <div class="swiper-button-next"></div>
+         <div class="swiper-button-prev"></div>
+
+      </div>
+
+   </section>
+
+   <!-- home section ends -->
+
+   <!-- availability section starts  -->
+
+   <section class="availability" id="availability">
+
+      <form action="" method="post" id="availability-form">
+         <div class="flex">
+            <div class="box">
+               <p>Check In <span>*</span></p>
+               <input type="date" name="check_in" class="input" required>
+            </div>
+            <div class="box">
+               <p>Check Out <span>*</span></p>
+               <input type="date" name="check_out" class="input" required>
+            </div>
+            <div class="box">
+               <p>Adults <span>*</span></p>
+               <select name="adults" class="input" required>
+                  <option value="1">1 adult</option>
+                  <option value="2">2 adults</option>
+                  <option value="3">3 adults</option>
+                  <option value="4">4 adults</option>
+                  <option value="5">5 adults</option>
+                  <option value="6">6 adults</option>
+               </select>
+            </div>
+            <div class="box">
+               <p>Childs <span>*</span></p>
+               <select name="children" class="input" required>
+                  <option value="0">0 child</option>
+                  <option value="1">1 child</option>
+                  <option value="2">2 childs</option>
+                  <option value="3">3 childs</option>
+                  <option value="4">4 childs</option>
+                  <option value="5">5 childs</option>
+                  <option value="6">6 childs</option>
+               </select>
+            </div>
+            <div class="box">
+               <p>Rooms <span>*</span></p>
+               <select name="rooms" class="input" required>
+                  <option value="1">1 room</option>
+                  <option value="2">2 rooms</option>
+                  <option value="3">3 rooms</option>
+                  <option value="4">4 rooms</option>
+                  <option value="5">5 rooms</option>
+                  <option value="6">6 rooms</option>
+               </select>
+            </div>
+         </div>
+         <input type="submit" value="check availability" name="check" class="btn">
+      </form>
+      <p id="availability-message"></p>
+   </section>
+
+   <!-- availability section ends -->
+
+   <!-- about section starts  -->
+
+   <section class="about" id="about">
+
+      <div class="row">
+         <div class="image">
+            <img src="images/about-img-1.jpg" alt="">
+         </div>
+         <div class="content">
+            <h3>Best Staff</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi laborum maxime eius aliquid temporibus
+               unde?</p>
+            <a href="#reservation" class="btn">Make a Reservation</a>
+         </div>
+      </div>
+
+      <div class="row revers">
+         <div class="image">
+            <img src="images/about-img-2.jpg" alt="">
+         </div>
+         <div class="content">
+            <h3>Best Foods</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi laborum maxime eius aliquid temporibus
+               unde?</p>
+            <a href="#contact" class="btn">Contact Us</a>
+         </div>
+      </div>
+
+      <div class="row">
+         <div class="image">
+            <img src="images/about-img-3.jpg" alt="">
+         </div>
+         <div class="content">
+            <h3>Swimming Pool</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi laborum maxime eius aliquid temporibus
+               unde?</p>
+            <a href="#availability" class="btn">Check Availability</a>
+         </div>
+      </div>
+
+   </section>
+
+   <!-- about section ends -->
+
+   <!-- services section starts  -->
+
+   <section class="services">
+
+      <div class="box-container">
+
+         <div class="box">
+            <img src="images/icon-1.png" alt="">
+            <h3>Food & Drinks</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero, sunt?</p>
+         </div>
+
+         <div class="box">
+            <img src="images/icon-2.png" alt="">
+            <h3>Outdoor Dining</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero, sunt?</p>
+         </div>
+
+         <div class="box">
+            <img src="images/icon-3.png" alt="">
+            <h3>Beach View</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero, sunt?</p>
+         </div>
+
+         <div class="box">
+            <img src="images/icon-4.png" alt="">
+            <h3>Decorations</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero, sunt?</p>
+         </div>
+
+         <div class="box">
+            <img src="images/icon-5.png" alt="">
+            <h3>Swimming pool</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero, sunt?</p>
+         </div>
+
+         <div class="box">
+            <img src="images/icon-6.png" alt="">
+            <h3>Resort Beach</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero, sunt?</p>
+         </div>
+
+      </div>
+
+   </section>
+
+   <!-- services section ends -->
+
+   <!-- reservation section starts  -->
+
+ //
+ <!-- reservation section starts  -->
+<section class="reservation" id="reservation">
+
+   <form action="reservation.html" method="get" id="reservation-form">
+       <h3>Make a Reservation</h3>
+       <div class="flex">
+           <div class="box">
+               <p>Name <span>*</span></p>
+               <input type="text" name="name" id="name" class="input" required maxlength="50" placeholder="Enter your name">
+           </div>
+           <div class="box">
+               <p>Email <span>*</span></p>
+               <input type="email" name="email" id="email" class="input" required maxlength="50" placeholder="Enter your email">
+           </div>
+           <div class="box">
+               <p>Check In <span>*</span></p>
+               <input type="date" name="checkin" class="input" id="checkin" required>
+           </div>
+           <div class="box">
+               <p>Check Out <span>*</span></p>
+               <input type="date" name="checkout" class="input" id="checkout" required>
+           </div>
+           <div class="box">
+               <p>Adults <span>*</span></p>
+               <select name="adults" class="input" id="adult" required>
+                   <option value="1">1 adult</option>
+                   <option value="2">2 adults</option>
+                   <option value="3">3 adults</option>
+                   <option value="4">4 adults</option>
+                   <option value="5">5 adults</option>
+                   <option value="6">6 adults</option>
+               </select>
+           </div>
+           <div class="box">
+               <p>Children <span>*</span></p>
+               <select name="children" class="input" id="child" required>
+                   <option value="0">0 child</option>
+                   <option value="1">1 child</option>
+                   <option value="2">2 children</option>
+                   <option value="3">3 children</option>
+                   <option value="4">4 children</option>
+                   <option value="5">5 children</option>
+                   <option value="6">6 children</option>
+               </select>
+           </div>
+           <div class="box">
+               <p>Rooms <span>*</span></p>
+               <select name="room" class="input" id="rooms" required>
+                   <option value="1">1 room</option>
+                   <option value="2">2 rooms</option>
+                   <option value="3">3 rooms</option>
+                   <option value="4">4 rooms</option>
+                   <option value="5">5 rooms</option>
+                   <option value="6">6 rooms</option>
+               </select>
+           </div>
+       </div>
+       <input type="button" value="Make Reservation" name="check" class="btn" id="submit-button">
+   </form>
+</section>
+<!-- reservation section ends -->
+
+
+   <!-- reservation section ends -->
+
+   <!-- gallery section starts  -->
+
+   <section class="gallery" id="gallery">
+
+      <div class="swiper gallery-slider">
+         <div class="swiper-wrapper">
+            <img src="images/gallery-img-1.jpg" class="swiper-slide" alt="">
+            <img src="images/gallery-img-2.webp" class="swiper-slide" alt="">
+            <img src="images/gallery-img-3.webp" class="swiper-slide" alt="">
+            <img src="images/gallery-img-4.webp" class="swiper-slide" alt="">
+            <img src="images/gallery-img-5.webp" class="swiper-slide" alt="">
+            <img src="images/gallery-img-6.webp" class="swiper-slide" alt="">
+         </div>
+         <div class="swiper-pagination"></div>
+      </div>
+
+   </section>
+
+   <!-- gallery section ends -->
+
+   <!-- contact section starts  -->
+
+   <section class="contact" id="contact">
+
+      <div class="row">
+
+         <form action="" method="post">
+            <h3>Send us Message</h3>
+            <input type="text" name="name" required maxlength="50" placeholder="Enter your name" class="box">
+            <input type="email" name="email" required maxlength="50" placeholder="Enter your email" class="box">
+            <input type="number" name="mumber" required maxlength="10" min="0" max="9999999999"
+               placeholder="Enter your number" class="box">
+            <textarea name="msg" class="box" required maxlength="1000" placeholder="Enter your message" cols="30"
+               rows="10"></textarea>
+            <input type="submit" value="send message" name="send" class="btn">
+         </form>
+
+         <div class="faq">
+            <h3 class="title">FAQs</h3>
+            <div class="box active">
+               <h3>How to Cancel?</h3>
+               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus sunt aspernatur excepturi eos!
+                  Quibusdam, sapiente.</p>
+            </div>
+            <div class="box">
+               <h3>Is there any Vacancy?</h3>
+               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa ipsam neque quaerat mollitia ratione?
+                  Soluta!</p>
+            </div>
+            <div class="box">
+               <h3>What are payment methods?</h3>
+               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa ipsam neque quaerat mollitia ratione?
+                  Soluta!</p>
+            </div>
+            <div class="box">
+               <h3>How to claim coupons codes?</h3>
+               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa ipsam neque quaerat mollitia ratione?
+                  Soluta!</p>
+            </div>
+            <div class="box">
+               <h3>What are the age requirements?</h3>
+               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa ipsam neque quaerat mollitia ratione?
+                  Soluta!</p>
+            </div>
+         </div>
+
+      </div>
+
+   </section>
+
+   <!-- contact section ends -->
+
+   <!-- reviews section starts  -->
+
+   <section class="reviews" id="reviews">
+
+      <div class="swiper reviews-slider">
+
+         <div class="swiper-wrapper">
+            <div class="swiper-slide box">
+               <img src="images/logo.png" alt="" class="dp">
+               <h3>Abhay Shankapal</h3>
+               <h4>Manager</h4>
+               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates blanditiis optio dignissimos eaque
+                  aliquid explicabo.</p>
+            </div>
+            <div class="swiper-slide box">
+               <img src="images/logo.png" alt="">
+               <h3>Umair Shaikh</h3>
+               <h4>Security Head</h4>
+               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates blanditiis optio dignissimos eaque
+                  aliquid explicabo.</p>
+            </div>
+            <div class="swiper-slide box">
+               <img src="images/logo.png" alt="">
+               <h3>Anish Shelar</h3>
+               <h4>Chef Manager</h4>
+               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates blanditiis optio dignissimos eaque
+                  aliquid explicabo.</p>
+            </div>
+            <div class="swiper-slide box">
+               <img src="images/logo.png" alt="">
+               <h3>Mohammad Shaikh</h3>
+               <h4>Supervisor</h4>
+               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates blanditiis optio dignissimos eaque
+                  aliquid explicabo.</p>
+            </div>
+            <div class="swiper-slide box">
+               <img src="images/logo.png" alt="">
+               <h3>Omkar Surve</h3>
+               <h4>Staff Head</h4>
+               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates blanditiis optio dignissimos eaque
+                  aliquid explicabo.</p>
+            </div>
+
+         </div>
+
+         <div class="swiper-pagination"></div>
+      </div>
+
+   </section>
+
+   <!-- reviews section ends  -->
+
+   <!-- footer section starts  -->
+
+   <section class="footer">
+
+      <div class="box-container">
+
+         <div class="box">
+            <a href="tel:1234567890"><i class="fas fa-phone"></i> +91-9087673082</a>
+            <a href="tel:1112223333"><i class="fas fa-phone"></i> +91-9087675568</a>
+            <a href="mailto:shakhanas@gmail.com"><i class="fas fa-envelope"></i> vitgrp13@gmail.com</a>
+            <a href="#"><i class="fas fa-map-marker-alt"></i> Pune, India - 411030</a>
+         </div>
+
+         <div class="box">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#reservation">Reservation</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#contact">Contact</a>
+            <a href="#reviews">Reviews</a>
+         </div>
+
+         <div class="box">
+            <a href="#">Facebook <i class="fab fa-facebook-f"></i></a>
+            <a href="#">Twitter <i class="fab fa-twitter"></i></a>
+            <a href="#">Instagram <i class="fab fa-instagram"></i></a>
+            <a href="#">Linkedin <i class="fab fa-linkedin"></i></a>
+         </div>
+
+      </div>
+
+      <div class="credit">&copy; copyright @ 2023 by VIT-SY group-13 | All rights reseved!</div>
+
+   </section>
+
+   <!-- footer section ends -->
+
+   <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+   
+   <script src="js/script.js"></script>
+   <script src="js/availability.js"></script>
+   <script src="js/reservation.js"></script>
+
+   <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-database.js"></script>
+
+
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+   <script>
+      function goToLoginPage() {
+          // Replace 'login.html' with the actual path to your login page
+          window.location.href = "login.html";
+      }
+  </script>
+  
+  <script>
+ // Import the functions you need from the SDKs you need
+
+ const firebaseConfig = {
+    apiKey: "AIzaSyAUpQkHOvFX-ac0qK6sEOsJh1ZRj5AIk5w",
+    authDomain: "hotel-133f9.firebaseapp.com",
+    databaseURL: "https://hotel-133f9-default-rtdb.firebaseio.com",
+    projectId: "hotel-133f9",
+    storageBucket: "hotel-133f9.appspot.com",
+    messagingSenderId: "607449947267",
+    appId: "1:607449947267:web:afe79d4c4c0ffc34f34fb6",
+    measurementId: "G-Y90417SDFF"
+  };
+  
+    // Initialize Firebase
+    
+    
+    firebase.initializeApp(firebaseConfig);
+  
+  // Reference to the Firebase database
+  const database = firebase.database();
+  
+  // Function to handle the form submission
+  function submitForm() {
+    // Get form input values
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const checkin = document.getElementById("checkin").value;
+    const checkout = document.getElementById("checkout").value;
+    const adult = document.getElementById("adult").value;
+    const child = document.getElementById("child").value;
+    const rooms = document.getElementById("rooms").value;
+    
+  
+    // Create a reference to a new child node in the 'formData' path
+   //  const formDataRef = database.ref("formData").push();
+    const formDataRef = database.ref('customers').push();
+    // Store the form data in Firebase
+    formDataRef.set({
+         name: name,
+         email: email,
+         adults: adult,
+         children: child,
+         rooms: rooms,
+         checkin: checkin,
+         checkout: checkout
+    });
+   
+    
+  
+    // Clear the form fields
+    
+  
+    // Optionally, you can display a success message or perform other actions here
+  }
+  
+  // Attach the form submission function to the form's submit event
+  document.getElementById("submit-button").addEventListener("click", function (e) {
+    e.preventDefault(); // Prevent the default form submission
+    submitForm(); // Call the custom form submission function
+  });
+     
+   
+  
+  // Import the functions you need from the SDKs you need
+  
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  
+
+    
+  </script>
+
+</body><!-- Login Modal -->
+<div id="login-modal" class="modal">
+  <div class="modal-content">
+    <span class="close" id="close-login">&times;</span>
+    <h2>Login</h2>
+    <form id="login-form">
+      <input type="email" id="login-email" placeholder="Email" required>
+      <input type="password" id="login-password" placeholder="Password" required>
+      <button type="submit" class="btn">Login</button>
+    </form>
+    <p>Don't have an account? <a href="#" id="show-register">Register here</a></p>
+  </div>
+</div>
+
+<!-- Register Modal -->
+<div id="register-modal" class="modal">
+  <div class="modal-content">
+    <span class="close" id="close-register">&times;</span>
+    <h2>Register</h2>
+    <form id="register-form">
+      <input type="text" id="register-name" placeholder="Full Name" required>
+      <input type="email" id="register-email" placeholder="Email" required>
+      <input type="password" id="register-password" placeholder="Password" required>
+      <button type="submit" class="btn">Register</button>
+    </form>
+    <p>Already have an account? <a href="#" id="show-login">Login here</a></p>
+  </div>
+</div>
+
+
+</html>

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Admin Panel - Hotel Swarg</title>
+
+   <!-- Font Awesome CDN link -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
+   <!-- Custom CSS file link -->
+   <link rel="stylesheet" href="css/style.css">
+
+   <style>
+     /* Admin Page Specific Styles */
+     body {
+       background-color: #f0f4f8; /* Light grey-blue background color */
+       font-family: Arial, sans-serif;
+     }
+
+     .admin-container {
+       padding: 20px;
+       background-color: #ffffff; /* White background for the content area */
+       border-radius: 8px;
+       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+       max-width: 1200px;
+       margin: auto;
+     }
+
+     .admin-container h2 {
+       text-align: center;
+       margin-bottom: 20px;
+     }
+
+     table {
+       width: 100%;
+       border-collapse: collapse;
+     }
+
+     table, th, td {
+       border: 1px solid #ddd;
+     }
+
+     th, td {
+       padding: 12px;
+       text-align: left;
+     }
+
+     th {
+       background-color: #f2f2f2;
+     }
+
+     .action-btn {
+       padding: 5px 10px;
+       margin-right: 5px;
+       border: none;
+       border-radius: 4px;
+       cursor: pointer;
+     }
+
+     .delete-btn {
+       background-color: #e74c3c;
+       color: white;
+     }
+
+     .add-customer-form {
+       margin-top: 30px;
+       max-width: 400px;
+       margin-left: auto;
+       margin-right: auto;
+       padding: 20px;
+       border: 1px solid #ddd;
+       border-radius: 8px;
+       background-color: #ffffff; /* White background for the form */
+     }
+
+     .add-customer-form input, .add-customer-form select {
+       width: 100%;
+       padding: 10px;
+       margin: 10px 0;
+     }
+
+     .add-customer-form button {
+       width: 100%;
+       background-color: #3498db; /* Button background color */
+       color: white;
+       border: none;
+       padding: 10px;
+       border-radius: 4px;
+       cursor: pointer;
+     }
+
+     .add-customer-form button:hover {
+       background-color: #2980b9; /* Darker blue on hover */
+     }
+   </style>
+</head>
+
+<body>
+
+   <section class="admin-container">
+      <h2>Admin Panel</h2>
+
+      <h3>Registered Customers</h3>
+      <table id="customers-table">
+         <thead>
+            <tr>
+               <th>Customer ID</th>
+               <th>Name</th>
+               <th>Email</th>
+               <th>No. of Adults</th>
+               <th>No. of Children</th>
+               <th>No. of Rooms</th>
+               <th>Check-In Date</th>
+               <th>Check-Out Date</th>
+               <th>Actions</th>
+            </tr>
+         </thead>
+         <tbody>
+            <!-- Customer rows will be populated here -->
+         </tbody>
+      </table>
+
+      <h3>Add New Customer</h3>
+      <form id="add-customer-form" class="add-customer-form">
+         <input type="text" id="new-customer-name" placeholder="Full Name" required>
+         <input type="email" id="new-customer-email" placeholder="Email" required>
+         <input type="password" id="new-customer-password" placeholder="Password" required>
+         <input type="number" id="new-customer-adults" placeholder="Number of Adults" required>
+         <input type="number" id="new-customer-children" placeholder="Number of Children" required>
+         <input type="number" id="new-customer-rooms" placeholder="Number of Rooms" required>
+         <input type="date" id="new-customer-checkin" placeholder="Check-In Date" required>
+         <input type="date" id="new-customer-checkout" placeholder="Check-Out Date" required>
+         <button type="submit" class="btn">Add Customer</button>
+      </form>
+   </section>
+
+   <!-- Firebase SDK -->
+   <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-database.js"></script>
+
+   <script>
+    // Initialize Firebase with your config
+    const firebaseConfig = {
+        apiKey: "AIzaSyAUpQkHOvFX-ac0qK6sEOsJh1ZRj5AIk5w",
+        authDomain: "hotel-133f9.firebaseapp.com",
+        databaseURL: "https://hotel-133f9-default-rtdb.firebaseio.com",
+        projectId: "hotel-133f9",
+        storageBucket: "hotel-133f9.appspot.com",
+        messagingSenderId: "607449947267",
+        appId: "1:607449947267:web:afe79d4c4c0ffc34f34fb6",
+        measurementId: "G-Y90417SDFF"
+    };
+    firebase.initializeApp(firebaseConfig);
+
+    // Add Customer Form Handling
+    const addCustomerForm = document.getElementById('add-customer-form');
+    const customersTable = document.getElementById('customers-table').getElementsByTagName('tbody')[0];
+
+    let customerIdCounter = 1;
+
+    addCustomerForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const name = document.getElementById('new-customer-name').value;
+        const email = document.getElementById('new-customer-email').value;
+        const adults = document.getElementById('new-customer-adults').value;
+        const children = document.getElementById('new-customer-children').value;
+        const rooms = document.getElementById('new-customer-rooms').value;
+        const checkinDate = document.getElementById('new-customer-checkin').value;
+        const checkoutDate = document.getElementById('new-customer-checkout').value;
+
+        // Create a new customer object
+        const customerData = {
+            name: name,
+            email: email,
+            adults: adults,
+            children: children,
+            rooms: rooms,
+            checkin: checkinDate,
+            checkout: checkoutDate
+        };
+
+        // Push customer data to Firebase
+        firebase.database().ref('customers').push(customerData)
+            .then(() => {
+                // After successful push to Firebase, add the customer to the table
+                addCustomerToTable(customerData, customerKey);
+            })
+            .catch(error => {
+                console.error("Error saving customer data to Firebase:", error);
+            });
+
+        // Reset the form
+        addCustomerForm.reset();
+    });
+
+    // Function to add a new row in the table
+    function addCustomerToTable(data, customerKey) {
+        const newRow = customersTable.insertRow();
+
+        const cellId = newRow.insertCell(0);
+        const cellName = newRow.insertCell(1);
+        const cellEmail = newRow.insertCell(2);
+        const cellAdults = newRow.insertCell(3);
+        const cellChildren = newRow.insertCell(4);
+        const cellRooms = newRow.insertCell(5);
+        const cellCheckin = newRow.insertCell(6);
+        const cellCheckout = newRow.insertCell(7);
+        const cellActions = newRow.insertCell(8);
+
+        cellId.innerText = customerKey;
+        cellName.innerText = data.name;
+        cellEmail.innerText = data.email;
+        cellAdults.innerText = data.adults;
+        cellChildren.innerText = data.children || '0';
+        cellRooms.innerText = data.rooms;
+        cellCheckin.innerText = data.checkin;
+        cellCheckout.innerText = data.checkout;
+
+        // Add delete button
+        const deleteButton = document.createElement('button');
+        deleteButton.className = 'delete-btn';
+        deleteButton.innerText = 'Delete';
+        deleteButton.onclick = function () {
+          firebase.database().ref('customers/' + customerKey).remove()
+            .then(() => {
+                // Remove the customer from the table
+                customersTable.deleteRow(newRow.rowIndex - 1);
+            })
+            .catch(error => {
+                console.error("Error deleting customer from Firebase:", error);
+            });
+        };
+        cellActions.appendChild(deleteButton);
+    }
+
+    // Retrieve customer data from Firebase and populate the table
+    function loadCustomers() {
+        firebase.database().ref('customers').once('value')
+            .then(snapshot => {
+                snapshot.forEach(childSnapshot => {
+                    const customerData = childSnapshot.val();
+                    const customerKey = childSnapshot.key; // Increment customer ID counter for each entry
+                    addCustomerToTable(customerData, customerKey);
+                });
+            })
+            .catch(error => {
+                console.error("Error retrieving customer data from Firebase:", error);
+            });
+    }
+
+    // Call loadCustomers function when the page loads
+    window.onload = function() {
+        loadCustomers();
+    };
+</script>
+
+
+</body>
+
+</html>
